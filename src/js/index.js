@@ -1,6 +1,6 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { QueryAPI } from './query-api';
-import SimpleLightbox from 'simplelightbox';
+import * as simplelightbox from 'simplelightbox/dist/simple-lightbox.esm';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const refs = {
@@ -12,11 +12,12 @@ const refs = {
 
 const objObserver = {
   options: {
-    rootMargin: '500px',
+    rootMargin: '400px',
     threshold: 0,
   },
   options2: {
-    threshold: 1,
+    rootMargin: '0px',
+    threshold: 1.0,
   },
 
   callbackObserv(entries, observer) {
@@ -99,7 +100,7 @@ function queryTemplate(obj) {
   } = obj;
 
   return `<li class="photo-card">
-            <img src="${webformatURL}" alt="${tags}" loading="lazy" data-source ="${largeImageURL}" />
+            <a class="gallery_link" href=${largeImageURL}><img src="${webformatURL}" alt="${tags}" loading="lazy" /></a>
             <div class="info">
               <p class="info-item">
                 <b>Likes <span class ="descr">${likes}</span></b>
@@ -129,3 +130,8 @@ function updateStatusObserver() {
     observForNotify.observe(refs.targetEl);
   }
 }
+
+const lightbox = new SimpleLightbox('.photo-card a', {
+  captionsData: 'alt',
+  captionDelay: 250,
+});
