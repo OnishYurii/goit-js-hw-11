@@ -32,7 +32,7 @@ header {
 
 button {
     display: inline-flex;
-    height: 38.5px;
+    height: 36px;
     width: 50px;
         border: none;
         border-radius: 4px;
@@ -61,7 +61,7 @@ input {
     padding: 8px;
     padding-right: 50px;
     color: #212121;
-    border-radius: 5px;
+    border-radius: 4px;
     font-size: 16px;
     outline: none;
     box-shadow: 10px 8px 8px 1px rgba(0, 0, 0, 0.3);
