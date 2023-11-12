@@ -6,7 +6,7 @@
     <title>Homework-11</title>
     <link rel="stylesheet" href="./style.css" />
   </head>
-  <body>
+  <header>
     <form class="search-form" id="search-form">
       <input
         type="text"
@@ -14,8 +14,14 @@
         autocomplete="off"
         placeholder="Search images..."
       />
-      <button type="submit">Search</button>
+      <button type="submit">
+        <svg class="header-icon-search" width="15" height="15">
+          <use href="./icons/symbol-defs.svg#icon-search"></use>
+        </svg>
+      </button>
     </form>
+  </header>
+  <body>
     <ul class="gallery"></ul>
     <div class="js-target"></div>
     <script src="./js/index.js" type="module"></script>

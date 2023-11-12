@@ -29,6 +29,7 @@ const objObserver = {
         .searchingQuery()
         .then(data => {
           renderQuery(data.hits);
+          lightbox.refresh();
         })
         .catch(er => console.log(er));
     });
@@ -121,11 +122,6 @@ function queryTemplate(obj) {
 function renderQuery(arr) {
   const markup = arr.map(queryTemplate).join('');
   refs.galleryList.insertAdjacentHTML('beforeend', markup);
-  const lightbox = new SimpleLightbox('.photo-card a', {
-    captionsData: 'alt',
-    captionDelay: 250,
-  });
-  lightbox.refresh();
 }
 
 function updateStatusObserver() {
@@ -135,3 +131,8 @@ function updateStatusObserver() {
     observForNotify.observe(refs.targetEl);
   }
 }
+
+const lightbox = new SimpleLightbox('.photo-card a', {
+  captionsData: 'alt',
+  captionDelay: 250,
+});
