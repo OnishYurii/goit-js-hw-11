@@ -1,6 +1,6 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { QueryAPI } from './query-api';
-import * as simplelightbox from 'simplelightbox/dist/simple-lightbox.esm';
+import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const refs = {
@@ -121,6 +121,11 @@ function queryTemplate(obj) {
 function renderQuery(arr) {
   const markup = arr.map(queryTemplate).join('');
   refs.galleryList.insertAdjacentHTML('beforeend', markup);
+  const lightbox = new SimpleLightbox('.photo-card a', {
+    captionsData: 'alt',
+    captionDelay: 250,
+  });
+  lightbox.refresh();
 }
 
 function updateStatusObserver() {
@@ -130,8 +135,3 @@ function updateStatusObserver() {
     observForNotify.observe(refs.targetEl);
   }
 }
-
-const lightbox = new SimpleLightbox('.photo-card a', {
-  captionsData: 'alt',
-  captionDelay: 250,
-});

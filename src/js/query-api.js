@@ -3,7 +3,7 @@ import axios from 'axios';
 export class QueryAPI {
   constructor() {
     this.q = '';
-    this.page = 1;
+    this.page = '';
     this.totalPage = 1;
   }
 
